@@ -56,7 +56,7 @@ export default async function Home() {
       <section className="relative overflow-hidden bg-white">
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-10 pt-4 lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:pb-14 lg:pt-6">
           <div className="animate-fade-up">
-            <p className="font-hand text-2xl text-petal-600">shaadi planning, minus the stress ♥</p>
+            <p className="font-hand text-2xl text-petal-600">marriage planning, minus the stress ♥</p>
             <h1 className="mt-2 text-balance text-[2.7rem] font-semibold leading-[1.04] text-wine-800 sm:text-6xl">
               Everyone you need for your big day.
             </h1>
