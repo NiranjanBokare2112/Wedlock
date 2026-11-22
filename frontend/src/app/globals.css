@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+}
+
+@theme {
+  /* Sindoor & wine: primary */
+  --color-wine-950: #2b0b17;
+  --color-wine-900: #4a1127;
+  --color-wine-800: #7a1c3d;
+  --color-wine-700: #93264b;
+  --color-wine-600: #ad3a5e;
+  /* Rose petal: accent */
+  --color-petal-200: #fde6ec;
+  --color-petal-300: #f9cdd8;
+  --color-petal-400: #f2a0b4;
+  --color-petal-500: #e2668a;
+  --color-petal-600: #c4466b;
+  /* Supporting */
+  --color-marigold: #f2a33a;
+  --color-marigold-soft: #fde7c4;
+  --color-cream: #ffffff;
+  --color-blush: #f7f5f3;
+  --color-ink: #2b2124;
+  --color-muted: #6e6466;
+  --color-line: #ebe6e3;
+  --color-maroon: #a3172f;
+
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-sway: sway 6s ease-in-out infinite;
+  --animate-spin-slow: spin 90s linear infinite;
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-hero-drift: hero-drift 9s ease-out forwards;
+
+  @keyframes hero-drift {
+    from { transform: scale(1); }
+    to { transform: scale(1.07); }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-variant-numeric: lining-nums;
+  }
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    font-variation-settings: "SOFT" 100, "WONK" 0;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    background: var(--color-petal-300);
+    color: var(--color-wine-900);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-petal-500);
+    outline-offset: 3px;
+  }
+}
+
+/* Soft scattered-petal texture for blush and wine surfaces */
+@utility bg-jaali {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='%23b9aaa4' fill-opacity='0.10'%3E%3Ccircle cx='18' cy='22' r='2'/%3E%3Ccircle cx='86' cy='54' r='1.6'/%3E%3Ccircle cx='52' cy='112' r='1.8'/%3E%3Ccircle cx='122' cy='118' r='1.4'/%3E%3Cpath d='M110 16c2.5-4 8-4 8 1.5s-5.5 6.5-8 3c-2.5 3.5-8 1.5-8-3S107.5 12 110 16Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Handwritten note accent */
+@utility font-hand {
+  font-family: var(--font-caveat), cursive;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
