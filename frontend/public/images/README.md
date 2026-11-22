@@ -14,7 +14,8 @@ copied from its prepared WebP files.
 | category-photography.webp | 27           | Photography category card         |
 | category-beauty.webp      | 26           | Beauty category card              |
 | category-planning.webp    | 19           | Planning category card            |
+| category-catering.webp    | supplied separately | Catering category card     |
 | moments/*.webp            | same numbers | "Moments our suppliers made" strip|
 
-Missing slots (category-catering, city-<name>) fall back to illustrations.
+Missing slots (city-<name>) fall back to illustrations.
 Replace any file with a real photo of the same name to swap it.
