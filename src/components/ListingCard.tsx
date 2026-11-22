@@ -12,7 +12,7 @@ export function ListingCard({ listing }: { listing: Listing }) {
   const assured = supplier?.plan === "ASSURED";
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_2px_0_0_#ebe6e3,0_18px_40px_-28px_rgba(122,28,61,0.35)] ring-1 ring-line transition duration-300 hover:-translate-y-1 hover:shadow-[0_2px_0_0_#ebe6e3,0_30px_60px_-30px_rgba(122,28,61,0.45)]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[0_2px_0_0_#ebe6e3,0_18px_40px_-28px_rgba(122,28,61,0.35)] ring-1 ring-line transition duration-300 hover:-translate-y-1 hover:shadow-[0_2px_0_0_#ebe6e3,0_30px_60px_-30px_rgba(122,28,61,0.45)]">
       <Link href={profileHref} className={`relative block h-44 overflow-hidden bg-gradient-to-br ${meta.gradient}`} aria-label={`View ${listing.title}`}>
         <svg viewBox="0 0 160 120" className="absolute -right-4 -top-3 h-32 w-40 transition duration-700 group-hover:rotate-6" aria-hidden="true">
           <Leaf x={92} y={46} size={34} angle={-160} />
@@ -49,7 +49,7 @@ export function ListingCard({ listing }: { listing: Listing }) {
         <h3 className="mt-2 text-2xl font-semibold leading-tight text-wine-800">
           <Link href={profileHref} className="hover:text-petal-600">{listing.title}</Link>
         </h3>
-        <p className="mt-1.5 line-clamp-2 text-sm leading-6 text-muted">{listing.description}</p>
+        <p className="mt-1.5 line-clamp-2 min-h-12 text-sm leading-6 text-muted">{listing.description}</p>
 
         {supplier && (
           <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">

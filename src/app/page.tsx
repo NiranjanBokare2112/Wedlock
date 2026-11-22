@@ -199,7 +199,7 @@ export default function Home() {
         </div>
         {featured.length > 0 ? (
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((listing, i) => <Reveal key={listing.id} delay={(i % 3) * 90}><ListingCard listing={listing} /></Reveal>)}
+            {featured.map((listing, i) => <Reveal key={listing.id} delay={(i % 3) * 90} className="h-full"><ListingCard listing={listing} /></Reveal>)}
           </div>
         ) : (
           <p className="mt-10 rounded-[1.5rem] border border-dashed border-petal-300 bg-white p-10 text-center text-muted">
