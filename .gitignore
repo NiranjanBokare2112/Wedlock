@@ -1,21 +1,30 @@
-# Python
-.venv/
-__pycache__/
-*.pyc
-.pytest_cache/
-
-# Node / Next.js
+# dependencies
 node_modules/
+.pnp
+.pnp.*
+
+# Next.js
 .next/
 out/
+next-env.d.ts
 *.tsbuildinfo
 
-# Environment files (keep the example)
+# Vercel
+.vercel
+
+# environment files (keep the example)
 .env
 .env.*
 !.env.example
 
-# OS / editor
+# Python leftovers from the retired backend
+.venv/
+__pycache__/
+.pytest_cache/
+
+# OS / editor / logs
 .DS_Store
 Thumbs.db
+*.pem
 *.log
+npm-debug.log*

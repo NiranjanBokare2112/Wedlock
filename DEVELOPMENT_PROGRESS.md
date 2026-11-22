@@ -50,3 +50,19 @@ Status: implemented on the development store.
 ### Still not implemented
 - Real SMS delivery, sign-in and role-based authorization (vendor dashboard uses a demo supplier switcher).
 - Plan billing, credit renewal schedule, and persistence (data resets on backend restart).
+
+## Vercel-ready demo (single Next.js app)
+Status: implemented. Builds with `next build` and deploys to Vercel with default settings.
+
+- The Next.js app now lives at the repository root; the FastAPI backend and Docker Compose
+  setup were retired (they remain in git history).
+- All marketplace rules were ported to `src/lib/demo/data.ts`; visitor activity is stored in the
+  browser, so the demo needs no database, backend or environment variables.
+- Fixed: the budget field rejected round amounts (step 1000 with min 1).
+- Verified end to end on a production build: requirement with OTP, category + city matching,
+  vendor unlock (credits 100 → 99), quotation, buyer acceptance, admin plan change and ranking,
+  quick enquiry, persistence across reloads, no console errors.
+
+### Limits of the demo
+- Data is per browser: buyer and supplier views must be tried in the same browser.
+- No real SMS, sign-in, billing or shared database.
