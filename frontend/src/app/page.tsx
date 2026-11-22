@@ -9,13 +9,13 @@ import { ArrowRightIcon, CategoryIcon, CheckIcon, PinIcon, SearchIcon } from "@/
 import { Blossom, FloralSpray, Leaf, Marigold, Rose } from "@/components/ornaments";
 import { apiGet, CATEGORIES, CITIES, DIRECTORY, directoryHref, EXTRA_NEEDS, type Listing } from "@/lib/site";
 
-const CITY_STYLE: Record<string, { bg: string; note: string }> = {
-  Jaipur: { bg: "from-[#fde1e8] to-[#f7b3c5]", note: "the Pink City, obviously" },
-  Udaipur: { bg: "from-[#e8e6fb] to-[#c9c3f0]", note: "lake palaces & sunsets" },
-  Mumbai: { bg: "from-[#ddf1ef] to-[#aedbd5]", note: "ballrooms by the sea" },
-  Delhi: { bg: "from-[#fdf0d8] to-[#f8d39b]", note: "big, fat & fabulous" },
-  Pune: { bg: "from-[#e9f2e6] to-[#c5dcbe]", note: "gardens & intimate vows" },
-  Goa: { bg: "from-[#dff3f8] to-[#b4e0ec]", note: "barefoot on the beach" },
+const CITY_STYLE: Record<string, { note: string }> = {
+  Jaipur: { note: "The Pink City, obviously" },
+  Udaipur: { note: "Lake palaces & sunsets" },
+  Mumbai: { note: "Ballrooms by the sea" },
+  Delhi: { note: "Big, fat & fabulous" },
+  Pune: { note: "Gardens & intimate vows" },
+  Goa: { note: "Barefoot on the beach" },
 };
 
 const HERO_SLIDES: Slide[] = [
@@ -54,7 +54,7 @@ export default async function Home() {
     <>
       {/* ───────────── Hero: text on the left, photos on the right ───────────── */}
       <section className="relative overflow-hidden bg-white">
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-8 lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:pb-24 lg:pt-12">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-10 pt-4 lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:pb-14 lg:pt-6">
           <div className="animate-fade-up">
             <p className="font-hand text-2xl text-petal-600">shaadi planning, minus the stress ♥</p>
             <h1 className="mt-2 text-balance text-[2.7rem] font-semibold leading-[1.04] text-wine-800 sm:text-6xl">
@@ -96,7 +96,7 @@ export default async function Home() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[520px] animate-fade-up [animation-delay:150ms] lg:max-w-none">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-[2rem] bg-blush shadow-[0_40px_80px_-40px_rgba(43,33,36,0.55)] sm:aspect-[5/5.4]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-t-[999px] rounded-b-[2rem] bg-blush shadow-[0_40px_80px_-40px_rgba(43,33,36,0.55)] sm:aspect-[5/5.4] lg:aspect-[6/5.6]">
               <HeroSlideshow slides={HERO_SLIDES} />
             </div>
             {/* small offset photo for depth */}
@@ -109,7 +109,7 @@ export default async function Home() {
       </section>
 
       {/* ───────────── Categories ───────────── */}
-      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
+      <section className="mx-auto max-w-7xl px-5 pb-20 pt-10 lg:px-8 lg:pt-12">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-hand text-2xl text-petal-600">let&apos;s start with</p>
@@ -261,14 +261,15 @@ export default async function Home() {
             const style = CITY_STYLE[city];
             return (
               <Reveal key={city} delay={(i % 3) * 80}>
-              <Link href={`/search?city=${city}`} className={`group relative flex h-full min-h-44 flex-col justify-end overflow-hidden rounded-[1.5rem] bg-gradient-to-br ${style.bg} p-5 ring-1 ring-black/5 transition hover:-translate-y-1 sm:min-h-52 sm:p-6`}>
-                <Photo name={`city-${city.toLowerCase()}`} alt={city} className="absolute inset-0">
-                  <FloralSpray className="absolute -right-8 -top-8 h-36 w-36 transition duration-700 group-hover:rotate-12 sm:h-44 sm:w-44" />
-                </Photo>
-                <div className="relative">
-                  <h3 className="text-3xl font-semibold text-wine-800 sm:text-4xl">{city}</h3>
-                  <p className="font-hand text-xl text-wine-700/80">{style.note}</p>
-                  <p className="mt-2 text-xs font-semibold text-wine-800/70">{count > 0 ? `${count} supplier${count > 1 ? "s" : ""}` : "coming soon"}</p>
+              <Link href={`/search?city=${city}`} className="group flex h-full min-h-36 flex-col justify-between rounded-[1.25rem] border border-line bg-white p-5 transition duration-300 hover:-translate-y-0.5 hover:border-wine-700 hover:shadow-[0_18px_40px_-28px_rgba(43,33,36,0.45)] sm:min-h-40 sm:p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <PinIcon className="h-5 w-5 text-petal-500" />
+                  <ArrowRightIcon className="h-5 w-5 -translate-x-1 text-wine-800 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-wine-800 sm:text-3xl">{city}</h3>
+                  <p className="mt-0.5 text-sm text-muted">{style.note}</p>
+                  <p className="mt-2 text-xs font-semibold text-wine-700">{count > 0 ? `${count} supplier${count > 1 ? "s" : ""}` : "Coming soon"}</p>
                 </div>
               </Link>
               </Reveal>
